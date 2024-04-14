@@ -4,25 +4,25 @@ import useContactAPI from "../hooks/useContactAPI";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
- const { token } = useAuth();
- const { loading, getContacts, contacts } = useContactAPI();
- const navigate = useNavigate();
- const [hasAttemptedFetch, setHasAttemptedFetch] = useState(false); // State to track if fetch attempt has been made
+  const { token } = useAuth();
+  const { loading, getContacts, contacts } = useContactAPI();
+  const navigate = useNavigate();
+  const [hasAttemptedFetch, setHasAttemptedFetch] = useState(false); // State to track if fetch attempt has been made
 
- useEffect(() => {
+  useEffect(() => {
     if (token && !hasAttemptedFetch) {
       getContacts();
       setHasAttemptedFetch(true); // Mark that a fetch attempt has been made
     }
- }, [token, getContacts, hasAttemptedFetch]); // Include hasAttemptedFetch in the dependency array
+  }, [token, getContacts, hasAttemptedFetch]); // Include hasAttemptedFetch in the dependency array
 
- useEffect(() => {
+  useEffect(() => {
     if (!loading && contacts.length > 0) {
       navigate("/contacts");
     }
- }, [loading, contacts, navigate]); // This effect depends on loading and contacts
+  }, [loading, contacts, navigate]); // This effect depends on loading and contacts
 
- return (
+  return (
     <>
       {loading ? (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50 flex justify-center items-center">
@@ -46,7 +46,7 @@ const Home = () => {
         </div>
       )}
     </>
- );
+  );
 };
 
 export default Home;

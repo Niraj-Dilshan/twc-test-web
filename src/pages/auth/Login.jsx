@@ -1,6 +1,6 @@
-import React, { useRef } from 'react';
-import useUserAPI from '../../hooks/useUserAPI';
-import { Link } from 'react-router-dom';
+import { useRef } from "react";
+import useUserAPI from "../../hooks/useUserAPI";
+import { Link } from "react-router-dom";
 
 // The Login component is the login page of the application.
 const Login = () => {
@@ -54,8 +54,8 @@ const Login = () => {
               disabled={loading}
               className="px-12 py-1 border-[2px] rounded-full "
             >
-              {loading ? 'Wait...' : 'login'}
-            </button>{' '}
+              {loading ? "Wait..." : "login"}
+            </button>{" "}
             <p className="mx-4">or</p>
             <Link to="/register" className="underline cursor-pointer">
               Click here to Register

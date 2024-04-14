@@ -1,4 +1,4 @@
-import { useRouteError } from 'react-router-dom';
+import { useRouteError } from "react-router-dom";
 
 // The ErrorPage component is a page that is displayed when an error occurs.
 function ErrorPage() {

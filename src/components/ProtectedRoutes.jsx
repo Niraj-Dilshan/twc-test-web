@@ -10,10 +10,10 @@ const ProtectedRoutes = ({ children }) => {
     if (!loading && !isAuthenticated) {
       navigate("/login", { replace: true });
     }
-  }, [isAuthenticated, navigate, loading, token]); // Add loading to the dependency array
+  }, [isAuthenticated, navigate, loading, token]);
 
   if (loading) {
-    return <div>Loading...</div>; // Or some loading indicator
+    return <div>Loading...</div>;
   }
 
   return children;

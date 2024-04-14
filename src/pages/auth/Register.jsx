@@ -1,19 +1,17 @@
-import React, { useRef } from 'react';
-import useUserAPI from '../../hooks/useUserAPI';
-import { Link } from 'react-router-dom';
+import { useRef } from "react";
+import useUserAPI from "../../hooks/useUserAPI";
+import { Link } from "react-router-dom";
 
-// The Register component is a page that allows users to register for an account.
 const Register = () => {
   const formRef = useRef(null);
 
   const { loading, error, registerUser } = useUserAPI();
 
-  // The handleSubmit function is called when the form is submitted.
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('formRef   ', formRef);
-    console.log('formRef.current.email  ', formRef.current.email.value);
+    console.log("formRef   ", formRef);
+    console.log("formRef.current.email  ", formRef.current.email.value);
     const formRefData = {
       email: formRef.current.email.value,
       password: formRef.current.password.value,
@@ -60,7 +58,7 @@ const Register = () => {
                 disabled={loading}
                 className="px-12 py-1 border-[2px] rounded-full "
               >
-                {loading ? 'Submitting...' : 'register'}
+                {loading ? "Submitting..." : "register"}
               </button>
             </div>
           </form>
@@ -71,7 +69,7 @@ const Register = () => {
         to=".."
         className="font-['poppins']  text-[1.438rem] leading-[3.125rem]   text-white underline cursor-pointer mt-16 w-[30rem]"
       >
-        {'< '}Back to login
+        {"< "}Back to login
       </Link>
     </>
   );

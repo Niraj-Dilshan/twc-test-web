@@ -1,32 +1,31 @@
-import { Outlet } from 'react-router-dom';
-import backgroundImage from '../../assets/background.jpg';
-import logo from '../../assets/logo.png';
+import { Outlet } from "react-router-dom";
+import backgroundImage from "../../assets/background.jpg";
+import logo from "../../assets/logo.png";
 
-// The AuthRootLayout component is a layout component that wraps the authentication pages.
 const AuthRootLayout = () => {
   return (
     <>
       <div
         className="flex flex-row items-center justify-center h-screen relative"
         style={{
-          backgroundColor: 'white',
+          backgroundColor: "white",
           backgroundImage: `url(${backgroundImage})`,
-          backgroundRepeat: 'repeat-x',
-          backgroundPosition: 'center',
-          backgroundSize: '100vh',
+          backgroundRepeat: "repeat-x",
+          backgroundPosition: "center",
+          backgroundSize: "100vh",
         }}
       >
         <div
           className="absolute top-0 left-0 w-full h-full"
           style={{
-            background: 'rgba(255, 255, 255, 0.8)', // Adjust the opacity value as needed
+            background: "rgba(255, 255, 255, 0.8)",
           }}
         ></div>
         <div
           className="flex flex-col w-7/12  h-[120vh] bg-[#083F46] justify-center items-center z-10"
           style={{
-            borderTopRightRadius: '50%  100%',
-            borderBottomRightRadius: '50%  100%',
+            borderTopRightRadius: "50%  100%",
+            borderBottomRightRadius: "50%  100%",
           }}
         >
           <Outlet />

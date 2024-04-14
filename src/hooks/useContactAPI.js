@@ -1,7 +1,7 @@
 // useContactAPI.js
-import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -18,7 +18,7 @@ const useContactAPI = () => {
   };
 
   const authHeader = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
 
@@ -27,12 +27,12 @@ const useContactAPI = () => {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/contacts`, {
-        method: 'GET',
+        method: "GET",
         headers: authHeader,
       });
 
       if (!res.ok) {
-        throw new Error('Failed to fetch contacts');
+        throw new Error("Failed to fetch contacts");
       }
 
       const data = await res.json();
@@ -42,7 +42,7 @@ const useContactAPI = () => {
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('An error occurred while fetching contacts');
+        setError("An error occurred while fetching contacts");
       }
     } catch (error) {
       setError(error.message);
@@ -56,7 +56,7 @@ const useContactAPI = () => {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/contacts`, {
-        method: 'POST',
+        method: "POST",
         headers: authHeader,
         body: JSON.stringify(values),
       });
@@ -64,11 +64,11 @@ const useContactAPI = () => {
 
       if (res.status === 200) {
         setContacts([...contacts, data.contact]);
-        navigate('/contacts');
+        navigate("/contacts");
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('Adding contact failed');
+        setError("Adding contact failed");
       }
     } catch (error) {
       setError(error.message);
@@ -82,7 +82,7 @@ const useContactAPI = () => {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/contacts/${contactId}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: authHeader,
       });
       const data = await res.json();
@@ -93,7 +93,7 @@ const useContactAPI = () => {
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('Deleting contact failed');
+        setError("Deleting contact failed");
       }
     } catch (error) {
       setError(error.message);
@@ -107,7 +107,7 @@ const useContactAPI = () => {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/contacts/${contactId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: authHeader,
         body: JSON.stringify(values),
       });
@@ -123,7 +123,7 @@ const useContactAPI = () => {
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('Updating contact failed');
+        setError("Updating contact failed");
       }
     } catch (error) {
       setError(error.message);

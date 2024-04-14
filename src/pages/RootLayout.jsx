@@ -1,13 +1,15 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import Topbar from '../components/Topbar';
-import BottomBar from '../components/BottomBar';
-import backgroundImage from '../assets/background.jpg';
+import { Outlet, useLocation } from "react-router-dom";
+import Topbar from "../components/Topbar";
+import BottomBar from "../components/BottomBar";
+import backgroundImage from "../assets/background.jpg";
 
 // The RootLayout component is a layout component that wraps the entire application.
 function RootLayout() {
   const location = useLocation();
 
-  const isLoginPage = location.pathname.includes('login') || location.pathname.includes('register');
+  const isLoginPage =
+    location.pathname.includes("login") ||
+    location.pathname.includes("register");
 
   return (
     <>
@@ -20,26 +22,26 @@ function RootLayout() {
                 <div
                   className="flex flex-row items-center justify-center h-screen text-white relative"
                   style={{
-                    backgroundColor: 'white',
+                    backgroundColor: "white",
                     backgroundImage: `url(${backgroundImage})`,
-                    backgroundRepeat: 'repeat-x',
-                    backgroundPosition: 'center',
-                    backgroundSize: '100vh',
+                    backgroundRepeat: "repeat-x",
+                    backgroundPosition: "center",
+                    backgroundSize: "100vh",
                   }}
                 >
                   <div
                     className="absolute top-0 left-0 w-full h-full"
                     style={{
-                      background: 'rgba(255, 255, 255, 0.8)', // Adjust the opacity value as needed
+                      background: "rgba(255, 255, 255, 0.8)", // Adjust the opacity value as needed
                     }}
                   ></div>
 
                   <div
                     className="h-[170vh] w-[400vw] flex flex-col justify-center items-center bg-[#083F46] z-20"
                     style={{
-                      borderTopRightRadius: '80% 40%',
+                      borderTopRightRadius: "80% 40%",
 
-                      borderBottomLeftRadius: '80% 40%',
+                      borderBottomLeftRadius: "80% 40%",
                     }}
                   ></div>
                 </div>
@@ -69,8 +71,6 @@ function RootLayout() {
               </div>
             </div>
           )}
-
-          {/* Login page or register page */}
           {isLoginPage && <Outlet />}
         </div>
       </main>

@@ -1,13 +1,10 @@
-import React from 'react';
-
-// The MessageModal component is a modal that displays a message to the user.
 const MessageModal = ({
   handlePopupClose,
   onConfirmation,
   showModal,
   isModelOpened,
 }) => {
-  console.log('showModal  ', showModal);
+  console.log("showModal  ", showModal);
   return (
     <>
       <div
@@ -15,7 +12,7 @@ const MessageModal = ({
         tabindex="-1"
         aria-hidden="true"
         className={` ${
-          !isModelOpened ? 'hidden' : ''
+          !isModelOpened ? "hidden" : ""
         } fixed  z-50 flex justify-center items-center w-full  md:inset-0  h-full max-h-full  bg-gray-900 bg-opacity-30 backdrop-blur-sm  `}
       >
         <div className="relative p-4 w-full max-w-[900px] ">
@@ -23,7 +20,7 @@ const MessageModal = ({
             <div className="flex flex-col items-center justify-center p-4">
               <p className="font-['poppins'] text-[30px] leading-[30px] text-[#083F46] font-medium">
                 {showModal.message ||
-                  'Your contact has been saved successfully!'}
+                  "Your contact has been saved successfully!"}
               </p>
 
               {showModal.confirmationModal ? (

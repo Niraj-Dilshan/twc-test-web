@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import useContactAPI from '../hooks/useContactAPI';
+import { useRef } from "react";
+import useContactAPI from "../hooks/useContactAPI";
 
 // The NewContact component is used to add a new contact.
 const NewContact = () => {
@@ -61,7 +61,7 @@ const NewContact = () => {
                   id="male"
                   name="gender"
                   className="mr-2 w-5 h-5 border-1 cursor-pointer  rounded-full"
-                  value={'male'}
+                  value={"male"}
                 />
                 <label htmlFor="male">male</label>
               </span>
@@ -71,7 +71,7 @@ const NewContact = () => {
                   id="female"
                   name="gender"
                   className="mr-2 w-5 h-5 border-1 cursor-pointer  rounded-full"
-                  value={'female'}
+                  value={"female"}
                 />
                 <label htmlFor="female">female</label>
               </span>
@@ -82,7 +82,7 @@ const NewContact = () => {
             disabled={loading}
             className="px-12 py-1 mt-14 border-[2px] rounded-full font-['poppins']  text-[1.438rem] leading-[3.125rem] w-[350px]   text-white "
           >
-            {loading ? 'Wait...' : 'add your first contact'}
+            {loading ? "Wait..." : "add your first contact"}
           </button>
         </form>
       </div>

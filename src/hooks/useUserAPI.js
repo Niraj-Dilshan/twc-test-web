@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -12,16 +12,16 @@ const useUserAPI = () => {
 
   const registerUser = async (values) => {
     if (values.password !== values.confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
     try {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/auth/register`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: values.email,
@@ -31,11 +31,11 @@ const useUserAPI = () => {
       const data = await res.json();
 
       if (res.status === 200) {
-        navigate('/login');
+        navigate("/login");
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('Registration failed');
+        setError("Registration failed");
       }
     } catch (error) {
       setError(error);
@@ -46,26 +46,26 @@ const useUserAPI = () => {
 
   // The loginUser function logs in a user.
   const loginUser = async (values) => {
-    console.log('BASE_URL', BASE_URL);
+    console.log("BASE_URL", BASE_URL);
     try {
       setError(null);
       setLoading(true);
       const res = await fetch(`${BASE_URL}/auth/login`, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify(values),
       });
       const data = await res.json();
 
       if (res.status === 200) {
         login(data.token);
-        navigate('/');
+        navigate("/");
       } else if (res.status === 400) {
         setError(data.message);
       } else {
-        setError('Login Failed');
+        setError("Login Failed");
       }
     } catch (error) {
       setError(error.message);
