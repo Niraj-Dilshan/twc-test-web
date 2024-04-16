@@ -1,14 +1,14 @@
-import { useRef } from "react";
+// Login.jsx
+import { useState, useRef, useEffect } from "react";
 import useUserAPI from "../../hooks/useUserAPI";
 import { Link } from "react-router-dom";
+import ErrorPopup from "../../components/ErrorPopup";
 
-// The Login component is the login page of the application.
 const Login = () => {
   const formRef = useRef();
-
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
   const { loading, error, loginUser } = useUserAPI();
 
-  // The handleSubmit function is called when the form is submitted.
   const handleSubmit = (e) => {
     e.preventDefault();
     const formRefData = {
@@ -18,9 +18,25 @@ const Login = () => {
     loginUser(formRefData);
   };
 
+  useEffect(() => {
+    if (error) {
+      handleError();
+    }
+  }, [error]);
+
+  const handleError = () => {
+    document.body.classList.add("overflow-hidden");
+    setShowErrorPopup(true);
+  };
+
+  const closeErrorPopup = () => {
+    document.body.classList.remove("overflow-hidden");
+    setShowErrorPopup(false);
+  };
+
   return (
     <>
-      <div className="mb-14 text-white inline-flex flex-col  items-start w-[30rem]">
+      <div className="mb-14 text-white inline-flex flex-col items-start w-[30rem]">
         <h1 className="text-[50px] leading-[73px] font-['poppins'] font-bold mb-4">
           Hi there,
         </h1>
@@ -37,7 +53,7 @@ const Login = () => {
             id="email"
             name="email"
             placeholder="e-mail"
-            className="mb-7 rounded-full font-['poppins'] text-[25px] leading-[50px]  font-medium p-0.5 pl-10 text-[#083F46]  h-[3.4rem] w-[30rem]"
+            className="mb-7 rounded-full font-['poppins'] text-[25px] leading-[50px] font-medium p-0.5 pl-10 text-[#083F46] h-[3.4rem] w-[30rem]"
           />
 
           <input
@@ -45,14 +61,14 @@ const Login = () => {
             id="password"
             name="password"
             placeholder="password"
-            className="mb-7 rounded-full font-['poppins'] text-[25px] leading-[50px] font-medium p-0.5 pl-10 text-[#083F46]  h-[3.4rem] w-[30rem]"
+            className="mb-7 rounded-full font-['poppins'] text-[25px] leading-[50px] font-medium p-0.5 pl-10 text-[#083F46] h-[3.4rem] w-[30rem]"
           />
 
-          <div className="flex flex-row items-center justify-start mt-14 font-['poppins']  text-[1.438rem] leading-[3.125rem]   text-white">
+          <div className="flex flex-row items-center justify-start mt-14 font-['poppins'] text-[1.438rem] leading-[3.125rem] text-white">
             <button
               type="submit"
               disabled={loading}
-              className="px-12 py-1 border-[2px] rounded-full "
+              className="px-12 py-1 border-[2px] rounded-full"
             >
               {loading ? "Wait..." : "login"}
             </button>{" "}
@@ -63,7 +79,9 @@ const Login = () => {
           </div>
         </form>
       </div>
-      {error && <div>{error}</div>}
+      {showErrorPopup && (
+        <ErrorPopup errorMessage={error} onClose={closeErrorPopup} />
+      )}
     </>
   );
 };
