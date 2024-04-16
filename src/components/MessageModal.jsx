@@ -4,7 +4,6 @@ const MessageModal = ({
   showModal,
   isModelOpened,
 }) => {
-  console.log("showModal  ", showModal);
   return (
     <>
       <div

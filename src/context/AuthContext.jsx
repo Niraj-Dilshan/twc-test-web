@@ -13,9 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     if (storedData && storedData.userToken) {
       setToken(storedData.userToken);
-      console.log("Tokenset", storedData.userToken);
       setIsAuthenticated(true);
-      console.log("isAuthenticated", isAuthenticated);
     }
     setLoading(false);
   }, []);

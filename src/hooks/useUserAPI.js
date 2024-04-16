@@ -46,7 +46,6 @@ const useUserAPI = () => {
 
   // The loginUser function logs in a user.
   const loginUser = async (values) => {
-    console.log("BASE_URL", BASE_URL);
     try {
       setError(null);
       setLoading(true);
