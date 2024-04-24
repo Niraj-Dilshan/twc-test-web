@@ -2,7 +2,7 @@
 
 ## Description
 
-The Contact Management System is a sophisticated Vue.js web application designed to streamline and enhance the way users manage their contacts. Built with a focus on user experience and efficiency, this application provides a simple solution for organizing, accessing, and managing contact information with ease.
+The Contact Management System is a sophisticated Vite.js web application designed to streamline and enhance the way users manage their contacts. Built with a focus on user experience and efficiency, this application provides a simple solution for organizing, accessing, and managing contact information with ease.
 
 ## Demo
 
